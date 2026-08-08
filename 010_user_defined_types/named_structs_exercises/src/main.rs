@@ -19,7 +19,11 @@ struct Persona {
 
 /// Costruisci una `Persona` usando la sintassi esplicita `campo: valore`.
 fn crea_persona(nome: &str, eta: u8) -> Persona {
-    todo!()
+    let persona = Persona {
+        nome: nome.to_string(),
+        eta: eta
+    };
+    persona
 }
 
 /// Esercizio 2 — Field init shorthand
@@ -30,7 +34,12 @@ fn crea_persona(nome: &str, eta: u8) -> Persona {
 /// Costruisci una `Persona` usando la shorthand syntax (qui `nome` è già una
 /// `String` e `eta` un `u8`, con i nomi giusti).
 fn crea_persona_shorthand(nome: String, eta: u8) -> Persona {
-    todo!()
+    
+    let persona = Persona {
+        nome,
+        eta
+    };
+    persona
 }
 
 /// Esercizio 3 — Accesso e mutazione dei campi
@@ -41,7 +50,8 @@ fn crea_persona_shorthand(nome: String, eta: u8) -> Persona {
 /// Scrivi una funzione che faccia "festeggiare il compleanno" a una persona,
 /// incrementando `eta` di 1, e restituisca il nuovo valore di `eta`.
 fn festeggia_compleanno(persona: &mut Persona) -> u8 {
-    todo!()
+    persona.eta += 1;
+    persona.eta
 }
 
 /// Esercizio 4 — Struct update syntax (`..`)
@@ -58,7 +68,11 @@ struct Rettangolo {
 /// Restituisci un nuovo `Rettangolo` con la stessa larghezza e altezza di
 /// `rett`, ma con `colore` uguale a "rosso". Usa la struct update syntax.
 fn colora_di_rosso(rett: &Rettangolo) -> Rettangolo {
-    todo!()
+    let nuovo_rettangolo = Rettangolo {
+        colore: String::from("rosso"),
+        ..*rett
+    };
+    nuovo_rettangolo
 }
 
 /// Esercizio 5 — Passare struct per riferimento
@@ -69,7 +83,7 @@ fn colora_di_rosso(rett: &Rettangolo) -> Rettangolo {
 /// Scrivi una funzione che calcoli l'area di un `Rettangolo` senza prenderne
 /// possesso.
 fn area(rett: &Rettangolo) -> f64 {
-    todo!()
+    rett.larghezza * rett.altezza
 }
 
 /// Esercizio 6 (bonus) — Tuple struct
@@ -82,7 +96,7 @@ struct Metri(f64);
 
 /// Converti dei metri in centimetri (1 m = 100 cm).
 fn metri_in_centimetri(m: Metri) -> f64 {
-    todo!()
+    m.0 *100.0
 }
 
 /// Esercizio 7 (bonus) — Struct a dimensione zero
@@ -95,7 +109,7 @@ struct Marcatore;
 
 /// Crea un'istanza di `Marcatore`.
 fn crea_marcatore() -> Marcatore {
-    todo!()
+    Marcatore
 }
 
 fn main() {
