@@ -19,7 +19,7 @@ enum Direzione {
 
 /// Restituisci la variante `Direzione::Destra`.
 fn direzione_destra() -> Direzione {
-    todo!()
+    Direzione::Destra
 }
 
 /// Esercizio 2 — Un enum può mescolare tipi di variante diversi
@@ -37,19 +37,19 @@ enum MossaGiocatore {
 
 /// Costruisci la variante unit `MossaGiocatore::Passa`.
 fn passa() -> MossaGiocatore {
-    todo!()
+    MossaGiocatore::Passa
 }
 
 /// Costruisci la variante tuple `MossaGiocatore::Corri`, che porta con sé
 /// una `Direzione`.
 fn corri(direzione: Direzione) -> MossaGiocatore {
-    todo!()
+    MossaGiocatore::Corri(direzione)
 }
 
 /// Costruisci la variante struct `MossaGiocatore::Teletrasporto`, coi campi
 /// `x` e `y`.
 fn teletrasporto(x: u32, y: u32) -> MossaGiocatore {
-    todo!()
+    MossaGiocatore::Teletrasporto {x, y}
 }
 
 /// Esercizio 3 — Un solo tipo per forme diverse
@@ -60,7 +60,7 @@ fn teletrasporto(x: u32, y: u32) -> MossaGiocatore {
 /// `MossaGiocatore::Passa` (usa `==`, reso possibile da `#[derive(PartialEq)]`
 /// — niente `match` necessario qui).
 fn e_una_pausa(mossa: &MossaGiocatore) -> bool {
-    todo!()
+    mossa == &MossaGiocatore::Passa 
 }
 
 /// Esercizio 4 — Leggere il discriminante
@@ -79,7 +79,7 @@ enum CodiceEsito {
 
 /// Restituisci il discriminante di `esito` come `u32` (usa `esito as u32`).
 fn discriminante(esito: CodiceEsito) -> u32 {
-    todo!()
+    esito as u32
 }
 
 /// Esercizio 5 — Discriminanti espliciti
@@ -93,14 +93,14 @@ fn discriminante(esito: CodiceEsito) -> u32 {
 enum CodiceHttp {
     Ok = 200,
     NonTrovato = 404,
-    ErroreServer, // <- quale valore avrà? non è scritto esplicitamente
+    ErroreServer = 405, // <- quale valore avrà? non è scritto esplicitamente
 }
 
 /// Restituisci il discriminante di `CodiceHttp::ErroreServer` come `u32`.
 /// (Suggerimento: qual è il discriminante della variante subito precedente,
 /// più 1?)
 fn codice_errore_server() -> u32 {
-    todo!()
+    CodiceHttp::ErroreServer as u32
 }
 
 /// Esercizio 6 (bonus) — Ottimizzazione dello spazio (niche optimization)
@@ -110,7 +110,7 @@ fn codice_errore_server() -> u32 {
 /// riferimento non-null — per rappresentare `None`, senza bisogno di un
 /// discriminante separato. Verifica questo fatto con `std::mem::size_of`.
 fn dimensione_option_riferimento() -> usize {
-    todo!()
+    std::mem::size_of::<Option<&i32>>()
 }
 
 fn main() {
